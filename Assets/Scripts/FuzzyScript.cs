@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-class FuzzyScript : MonoBehaviour
+public class FuzzyScript : MonoBehaviour
 {
     private MembershipFunction playerHealth;
     private MembershipFunction enemiesHealth;
@@ -22,14 +22,74 @@ class FuzzyScript : MonoBehaviour
         {
             foreach(KeyValuePair<string, float> pairE in enemy)
             {
-                //if PLAYER is POSITIVELARGE AND ENEMY is NEGATIVELARGE THEN OUTPUT is POSITIVELARGE
-                if(FuzzyRule.CheckConditions(pairP.Key, "POSITIVELARGE", pairE.Key, "NEGATIVELARGE"))
+                Debug.Log("Checking rules");
+                //POSITIVELARGE output
+                if(FuzzyRule.CheckConditions(pairP.Key, "POSITIVELARGE", pairE.Key, "NEGATIVELARGE") ||
+                   FuzzyRule.CheckConditions(pairP.Key, "POSITIVELARGE", pairE.Key, "NEGATIVESMALL") ||
+                   FuzzyRule.CheckConditions(pairP.Key, "POSITIVESMALL", pairE.Key, "NEGATIVELARGE"))
                 {
                     output.Add("POSITIVELARGE");
                 }
 
-                //if PLAYER is NEGATIVELARGE AND ENEMY is POSITIVELARGE THEN OUTPUT is NEGATIVELARGE
-                if (FuzzyRule.CheckConditions(pairP.Key, "NEGATIVELARGE", pairE.Key, "POSITIVELARGE"))
+                //POSITIVESMALL output
+                if (FuzzyRule.CheckConditions(pairP.Key, "NEGATIVETINY", pairE.Key, "NEGATIVELARGE") ||
+                    FuzzyRule.CheckConditions(pairP.Key, "POSITIVETINY", pairE.Key, "NEGATIVELARGE") ||
+                    FuzzyRule.CheckConditions(pairP.Key, "POSITIVETINY", pairE.Key, "NEGATIVESMALL") ||
+                    FuzzyRule.CheckConditions(pairP.Key, "POSITIVESMALL", pairE.Key, "NEGATIVESMALL") ||
+                    FuzzyRule.CheckConditions(pairP.Key, "POSITIVESMALL", pairE.Key, "NEGATIVETINY") ||
+                    FuzzyRule.CheckConditions(pairP.Key, "POSITIVELARGE", pairE.Key, "NEGATIVETINY") ||
+                    FuzzyRule.CheckConditions(pairP.Key, "POSITIVELARGE", pairE.Key, "POSITIVETINY"))
+                {
+                    output.Add("POSITIVESMALL");
+                }
+
+                //POSITIVETINY output
+                if (FuzzyRule.CheckConditions(pairP.Key, "NEGATIVESMALL", pairE.Key, "NEGATIVELARGE") ||
+                    FuzzyRule.CheckConditions(pairP.Key, "NEGATIVETINY", pairE.Key, "NEGATIVESMALL") ||
+                    FuzzyRule.CheckConditions(pairP.Key, "POSITIVETINY", pairE.Key, "NEGATIVETINY") ||
+                    FuzzyRule.CheckConditions(pairP.Key, "POSITIVESMALL", pairE.Key, "POSITIVETINY") ||
+                    FuzzyRule.CheckConditions(pairP.Key, "POSITIVELARGE", pairE.Key, "POSITIVESMALL"))
+                {
+                    output.Add("POSITIVETINY");
+                }
+
+                //ZERO output
+                if (FuzzyRule.CheckConditions(pairP.Key, "NEGATIVELARGE", pairE.Key, "NEGATIVELARGE") ||
+                    FuzzyRule.CheckConditions(pairP.Key, "NEGATIVESMALL", pairE.Key, "NEGATIVESMALL") ||
+                    FuzzyRule.CheckConditions(pairP.Key, "NEGATIVETINY", pairE.Key, "NEGATIVETINY") ||
+                    FuzzyRule.CheckConditions(pairP.Key, "POSITIVETINY", pairE.Key, "POSITIVETINY") ||
+                    FuzzyRule.CheckConditions(pairP.Key, "POSITIVESMALL", pairE.Key, "POSITIVESMALL") ||
+                    FuzzyRule.CheckConditions(pairP.Key, "POSITIVELARGE", pairE.Key, "POSITIVELARGE"))
+                {
+                    output.Add("POSITIVETINY");
+                }
+
+                //NEGATIVETINY output
+                if (FuzzyRule.CheckConditions(pairP.Key, "NEGATIVELARGE", pairE.Key, "NEGATIVESMALL") ||
+                    FuzzyRule.CheckConditions(pairP.Key, "NEGATIVESMALL", pairE.Key, "NEGATIVETINY") ||
+                    FuzzyRule.CheckConditions(pairP.Key, "NEGATIVETINY", pairE.Key, "POSITIVETINY") ||
+                    FuzzyRule.CheckConditions(pairP.Key, "POSITIVETINY", pairE.Key, "POSITIVESMALL") ||
+                    FuzzyRule.CheckConditions(pairP.Key, "POSITIVESMALL", pairE.Key, "POSITIVELARGE"))
+                {
+                    output.Add("NEGATIVETINY");
+                }
+
+                //NEGATIVESMALL output
+                if (FuzzyRule.CheckConditions(pairP.Key, "NEGATIVELARGE", pairE.Key, "NEGATIVETINY") ||
+                    FuzzyRule.CheckConditions(pairP.Key, "NEGATIVELARGE", pairE.Key, "POSITIVETINY") ||
+                    FuzzyRule.CheckConditions(pairP.Key, "NEGATIVESMALL", pairE.Key, "POSITIVETINY") ||
+                    FuzzyRule.CheckConditions(pairP.Key, "NEGATIVESMALL", pairE.Key, "POSITIVESMALL") ||
+                    FuzzyRule.CheckConditions(pairP.Key, "NEGATIVETINY", pairE.Key, "POSITIVESMALL") ||
+                    FuzzyRule.CheckConditions(pairP.Key, "NEGATIVETINY", pairE.Key, "POSITIVESMALL") ||
+                    FuzzyRule.CheckConditions(pairP.Key, "POSITIVETINY", pairE.Key, "POSITIVELARGE"))
+                {
+                    output.Add("POSITIVESMALL");
+                }
+
+                //NEGATIVELARGE output
+                if (FuzzyRule.CheckConditions(pairP.Key, "NEGATIVELARGE", pairE.Key, "POSITIVELARGE") ||
+                    FuzzyRule.CheckConditions(pairP.Key, "NEGATIVELARGE", pairE.Key, "POSITIVESMALL") ||
+                   FuzzyRule.CheckConditions(pairP.Key, "NEGATIVESMALL", pairE.Key, "POSITIVELARGE"))
                 {
                     output.Add("NEGATIVELARGE");
                 }
@@ -42,11 +102,8 @@ class FuzzyScript : MonoBehaviour
 
         for (int i = 0; i < output.Count; i++)
         {
-            if(!uniqueOutput.Contains(output[i]))
-            {
-                uniqueOutput.Add(output[i]);
-                fuzzyValues.Add(outputFunc.GetValueFromName(output[i]));
-            }
+            fuzzyValues.Add(outputFunc.GetValueFromName(output[i]));
+            Debug.Log("value added" + output[i]);
         }
 
         return Defuzzificate(fuzzyValues);
@@ -59,9 +116,9 @@ class FuzzyScript : MonoBehaviour
 
     void Start()
     {
-        playerHealth = new MembershipFunction(5, 0.0f, 100.0f);
-        enemiesHealth = new MembershipFunction(5, 0.0f, 100.0f);
-        outputFunc = new MembershipFunction(5, -1.0f, 1.0f);
+        playerHealth = new MembershipFunction(6, 0.0f, 100.0f);
+        enemiesHealth = new MembershipFunction(6, 0.0f, 100.0f);
+        outputFunc = new MembershipFunction(6, 0.0f, 100.0f);
     }
 
     void Update()

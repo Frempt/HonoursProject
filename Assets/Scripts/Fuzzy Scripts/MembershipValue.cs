@@ -16,7 +16,7 @@ class MembershipValue
 
     public float GetCenterPoint()
     {
-        return c;
+        return b;
     }
 
     public float GetDegreeOfMembership(float input)

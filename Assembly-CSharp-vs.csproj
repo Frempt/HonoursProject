@@ -48,6 +48,10 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\AdaptiveCalculator.cs" />
      <Compile Include="Assets\Scripts\ClipHolder.cs" />
+     <Compile Include="Assets\Scripts\Fuzzy Scripts\FuzzyRule.cs" />
+     <Compile Include="Assets\Scripts\Fuzzy Scripts\MembershipFunction.cs" />
+     <Compile Include="Assets\Scripts\Fuzzy Scripts\MembershipValue.cs" />
+     <Compile Include="Assets\Scripts\FuzzyScript.cs" />
      <Compile Include="Assets\Scripts\GUIScript.cs" />
      <Compile Include="Assets\Scripts\Music.cs" />
      <Compile Include="Assets\Scripts\RuleBaseScript.cs" />

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using UnityEngine;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,17 +16,20 @@ class MembershipFunction
 
         names[0] = "NEGATIVELARGE";
         names[1] = "NEGATIVESMALL";
-        names[2] = "ZERO";
-        names[3] = "POSITIVESMALL";
-        names[4] = "POSITIVELARGE";
+        names[2] = "NEGATIVETINY";
+        names[3] = "POSITIVETINY";
+        names[4] = "POSITIVESMALL";
+        names[5] = "POSITIVELARGE";
+
+        float spacing = (maxVal / numOfValues) * 1.2f;
 
         for (int i = 0; i < values.Length; i++)
         {
-            float spacing = (maxVal / numOfValues);
             float b = minVal + (i * spacing);
             float a = b - (spacing/2);
             float c = b + (spacing/2);
             values[i] = new MembershipValue(a, b, c);
+            //Debug.Log(a + " " + b + " " + c);
         }
     }
 
@@ -57,7 +61,6 @@ class MembershipFunction
                 returnValue = values[i].GetCenterPoint();
             }
         }
-
         return returnValue;
     }
 }
