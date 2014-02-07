@@ -52,15 +52,27 @@ class MembershipFunction
 
     public float GetValueFromName(string name)
     {
-        float returnValue = 0.0f;
-
         for (int i = 0; i < values.Length; i++)
         {
             if (names[i] == name)
             {
-                returnValue = values[i].GetCenterPoint();
+                return values[i].GetCenterPoint();
             }
         }
-        return returnValue;
+        //returns 0 if the name is not found
+        return 0.0f;
+    }
+
+    public float GetValueFromName(string name, float membership)
+    {
+        for (int i = 0; i < values.Length; i++)
+        {
+            if (names[i] == name)
+            {
+                return values[i].GetCenterPoint();
+            }
+        }
+        //returns 0 if the name is not found
+        return 0.0f;
     }
 }

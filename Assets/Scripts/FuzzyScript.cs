@@ -12,10 +12,13 @@ public class FuzzyScript : MonoBehaviour
 
     public float CalculateOutput(float input1, float input2)
     {
+        playerHealth = new MembershipFunction(6, 0.0f, 100.0f);
+        enemiesHealth = new MembershipFunction(6, 0.0f, 100.0f);
+        outputFunc = new MembershipFunction(6, 0.0f, 100.0f);
+
         List<KeyValuePair<string, float>> player = playerHealth.GetMembers(input1);
         List<KeyValuePair<string, float>> enemy = enemiesHealth.GetMembers(input2);
-        //List<KeyValuePair<string, float>> output = new List<KeyValuePair<string, float>>();
-        List<string> output = new List<string>();
+        List<KeyValuePair<string, float>> output = new List<KeyValuePair<string, float>>();
 
         //test rules
         foreach(KeyValuePair<string, float> pairP in player)
@@ -28,7 +31,11 @@ public class FuzzyScript : MonoBehaviour
                    FuzzyRule.CheckConditions(pairP.Key, "POSITIVELARGE", pairE.Key, "NEGATIVESMALL") ||
                    FuzzyRule.CheckConditions(pairP.Key, "POSITIVESMALL", pairE.Key, "NEGATIVELARGE"))
                 {
-                    output.Add("POSITIVELARGE");
+                    float outputVal;
+                    if (pairP.Value > pairE.Value) outputVal = pairP.Value;
+                    else outputVal = pairE.Value;
+
+                    output.Add(new KeyValuePair<string, float>("POSITIVELARGE", outputVal));
                 }
 
                 //POSITIVESMALL output
@@ -40,38 +47,45 @@ public class FuzzyScript : MonoBehaviour
                     FuzzyRule.CheckConditions(pairP.Key, "POSITIVELARGE", pairE.Key, "NEGATIVETINY") ||
                     FuzzyRule.CheckConditions(pairP.Key, "POSITIVELARGE", pairE.Key, "POSITIVETINY"))
                 {
-                    output.Add("POSITIVESMALL");
+                    float outputVal;
+                    if (pairP.Value > pairE.Value) outputVal = pairP.Value;
+                    else outputVal = pairE.Value;
+
+                    output.Add(new KeyValuePair<string, float>("POSITIVESMALL", outputVal));
                 }
 
                 //POSITIVETINY output
-                if (FuzzyRule.CheckConditions(pairP.Key, "NEGATIVESMALL", pairE.Key, "NEGATIVELARGE") ||
+                if (FuzzyRule.CheckConditions(pairP.Key, "POSITIVETINY", pairE.Key, "POSITIVETINY") ||
+                    FuzzyRule.CheckConditions(pairP.Key, "POSITIVESMALL", pairE.Key, "POSITIVESMALL") ||
+                    FuzzyRule.CheckConditions(pairP.Key, "POSITIVELARGE", pairE.Key, "POSITIVELARGE") ||
+                    FuzzyRule.CheckConditions(pairP.Key, "NEGATIVESMALL", pairE.Key, "NEGATIVELARGE") ||
                     FuzzyRule.CheckConditions(pairP.Key, "NEGATIVETINY", pairE.Key, "NEGATIVESMALL") ||
                     FuzzyRule.CheckConditions(pairP.Key, "POSITIVETINY", pairE.Key, "NEGATIVETINY") ||
                     FuzzyRule.CheckConditions(pairP.Key, "POSITIVESMALL", pairE.Key, "POSITIVETINY") ||
                     FuzzyRule.CheckConditions(pairP.Key, "POSITIVELARGE", pairE.Key, "POSITIVESMALL"))
                 {
-                    output.Add("POSITIVETINY");
-                }
+                    float outputVal;
+                    if (pairP.Value > pairE.Value) outputVal = pairP.Value;
+                    else outputVal = pairE.Value;
 
-                //ZERO output
-                if (FuzzyRule.CheckConditions(pairP.Key, "NEGATIVELARGE", pairE.Key, "NEGATIVELARGE") ||
-                    FuzzyRule.CheckConditions(pairP.Key, "NEGATIVESMALL", pairE.Key, "NEGATIVESMALL") ||
-                    FuzzyRule.CheckConditions(pairP.Key, "NEGATIVETINY", pairE.Key, "NEGATIVETINY") ||
-                    FuzzyRule.CheckConditions(pairP.Key, "POSITIVETINY", pairE.Key, "POSITIVETINY") ||
-                    FuzzyRule.CheckConditions(pairP.Key, "POSITIVESMALL", pairE.Key, "POSITIVESMALL") ||
-                    FuzzyRule.CheckConditions(pairP.Key, "POSITIVELARGE", pairE.Key, "POSITIVELARGE"))
-                {
-                    output.Add("POSITIVETINY");
+                    output.Add(new KeyValuePair<string, float>("POSITIVETINY", outputVal));
                 }
 
                 //NEGATIVETINY output
-                if (FuzzyRule.CheckConditions(pairP.Key, "NEGATIVELARGE", pairE.Key, "NEGATIVESMALL") ||
+                if (FuzzyRule.CheckConditions(pairP.Key, "NEGATIVELARGE", pairE.Key, "NEGATIVELARGE") ||
+                    FuzzyRule.CheckConditions(pairP.Key, "NEGATIVESMALL", pairE.Key, "NEGATIVESMALL") ||
+                    FuzzyRule.CheckConditions(pairP.Key, "NEGATIVETINY", pairE.Key, "NEGATIVETINY") || 
+                    FuzzyRule.CheckConditions(pairP.Key, "NEGATIVELARGE", pairE.Key, "NEGATIVESMALL") ||
                     FuzzyRule.CheckConditions(pairP.Key, "NEGATIVESMALL", pairE.Key, "NEGATIVETINY") ||
                     FuzzyRule.CheckConditions(pairP.Key, "NEGATIVETINY", pairE.Key, "POSITIVETINY") ||
                     FuzzyRule.CheckConditions(pairP.Key, "POSITIVETINY", pairE.Key, "POSITIVESMALL") ||
                     FuzzyRule.CheckConditions(pairP.Key, "POSITIVESMALL", pairE.Key, "POSITIVELARGE"))
                 {
-                    output.Add("NEGATIVETINY");
+                    float outputVal;
+                    if (pairP.Value > pairE.Value) outputVal = pairP.Value;
+                    else outputVal = pairE.Value;
+
+                    output.Add(new KeyValuePair<string, float>("NEGATIVETINY", outputVal));
                 }
 
                 //NEGATIVESMALL output
@@ -80,10 +94,14 @@ public class FuzzyScript : MonoBehaviour
                     FuzzyRule.CheckConditions(pairP.Key, "NEGATIVESMALL", pairE.Key, "POSITIVETINY") ||
                     FuzzyRule.CheckConditions(pairP.Key, "NEGATIVESMALL", pairE.Key, "POSITIVESMALL") ||
                     FuzzyRule.CheckConditions(pairP.Key, "NEGATIVETINY", pairE.Key, "POSITIVESMALL") ||
-                    FuzzyRule.CheckConditions(pairP.Key, "NEGATIVETINY", pairE.Key, "POSITIVESMALL") ||
+                    FuzzyRule.CheckConditions(pairP.Key, "NEGATIVETINY", pairE.Key, "POSITIVELARGE") ||
                     FuzzyRule.CheckConditions(pairP.Key, "POSITIVETINY", pairE.Key, "POSITIVELARGE"))
                 {
-                    output.Add("POSITIVESMALL");
+                    float outputVal;
+                    if (pairP.Value > pairE.Value) outputVal = pairP.Value;
+                    else outputVal = pairE.Value;
+
+                    output.Add(new KeyValuePair<string, float>("NEGATIVESMALL", outputVal));
                 }
 
                 //NEGATIVELARGE output
@@ -91,34 +109,34 @@ public class FuzzyScript : MonoBehaviour
                     FuzzyRule.CheckConditions(pairP.Key, "NEGATIVELARGE", pairE.Key, "POSITIVESMALL") ||
                    FuzzyRule.CheckConditions(pairP.Key, "NEGATIVESMALL", pairE.Key, "POSITIVELARGE"))
                 {
-                    output.Add("NEGATIVELARGE");
+                    float outputVal;
+                    if (pairP.Value > pairE.Value) outputVal = pairP.Value;
+                    else outputVal = pairE.Value;
+
+                    output.Add(new KeyValuePair<string, float>("NEGATIVELARGE", outputVal));
                 }
             }
         }
 
-        //get values for defuzzification
-        List<string> uniqueOutput = new List<string>();
-        List<float> fuzzyValues = new List<float>();
-
-        for (int i = 0; i < output.Count; i++)
-        {
-            fuzzyValues.Add(outputFunc.GetValueFromName(output[i]));
-            Debug.Log("value added" + output[i]);
-        }
-
-        return Defuzzificate(fuzzyValues);
+        return Defuzzificate(output);
     }
 
-    public float Defuzzificate(List<float> values)
+    public float Defuzzificate(List<KeyValuePair<string, float>> values)
     {
-        return values.Average();
+        List<float> outputVals = new List<float>();
+
+        foreach (KeyValuePair<string, float> pair in values)
+        {
+            outputVals.Add(outputFunc.GetValueFromName(pair.Key));//pair.Value);
+            Debug.Log("name = " + pair.Key + " value = " + pair.Value);
+        }
+
+        if (outputVals.Count < 1) return 0.0f;
+        return outputVals.Average();
     }
 
     void Start()
     {
-        playerHealth = new MembershipFunction(6, 0.0f, 100.0f);
-        enemiesHealth = new MembershipFunction(6, 0.0f, 100.0f);
-        outputFunc = new MembershipFunction(6, 0.0f, 100.0f);
     }
 
     void Update()
