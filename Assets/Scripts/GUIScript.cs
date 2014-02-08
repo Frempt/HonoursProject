@@ -28,6 +28,8 @@ public class GUIScript : MonoBehaviour
 
 	public List<float> enemyHealth = new List<float>();
 
+    public RuleBaseScript rbs;
+
     private Rect windowRect = new Rect(0, 0, Screen.width, Screen.height);
 
 	void Start () 
@@ -76,6 +78,11 @@ public class GUIScript : MonoBehaviour
         {
             float newHealth = MAX_ENEMY_HEALTH;
             enemyHealth.Add(newHealth);
+        }
+
+        if(GUI.Button(new Rect(350, 0, 100, 50), "Throw Grenade"))
+        {
+            rbs.PlaySting("sting_guitar_");
         }
 
         //sliders

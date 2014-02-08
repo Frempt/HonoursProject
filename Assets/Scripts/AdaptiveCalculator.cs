@@ -75,4 +75,14 @@ public class AdaptiveCalculator : MonoBehaviour
 		}
 		segment++;
 	}
+
+    public void PlaySting(string key)
+    {
+        key += "1";
+        float[] data = clipHolder.GetClipDataFromString(key);
+        AudioClip clip = AudioClip.Create("clip", data.Length, 1, 44100, false, false);
+        clip.SetData(data, 0);
+
+        if(!music.stingSource.isPlaying) music.stingSource.clip = clip;
+    }
 }

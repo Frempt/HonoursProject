@@ -1,2 +1,2 @@
-lead_synth_01_01
+lead_synth_1_1
 theme_instrument_variation_segment

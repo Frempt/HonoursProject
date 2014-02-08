@@ -53,6 +53,10 @@ public class ClipHolder : MonoBehaviour
 
 	public AudioClip rhythm_drum_1_1;
 
+    public AudioClip sting_guitar_1_1;
+
+    public AudioClip sting_guitar_2_1;
+
 	public int sampleLength;
 
 	public Dictionary<string, float[]> datas = new Dictionary<string, float[]>();
@@ -116,6 +120,10 @@ public class ClipHolder : MonoBehaviour
         datas.Add("rhythm_groove_1_2", GetDataFromClip(rhythm_drum_1_1));
         datas.Add("rhythm_groove_1_3", GetDataFromClip(rhythm_drum_1_1));
         datas.Add("rhythm_groove_1_4", GetDataFromClip(rhythm_drum_1_1));
+
+        datas.Add("sting_guitar_1_1", GetDataFromClip(sting_guitar_1_1));
+
+        datas.Add("sting_guitar_2_1", GetDataFromClip(sting_guitar_2_1));
 	}
 	
 	// Update is called once per frame

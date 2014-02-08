@@ -25,7 +25,6 @@ public class FuzzyScript : MonoBehaviour
         {
             foreach(KeyValuePair<string, float> pairE in enemy)
             {
-                Debug.Log("Checking rules");
                 //POSITIVELARGE output
                 if(FuzzyRule.CheckConditions(pairP.Key, "POSITIVELARGE", pairE.Key, "NEGATIVELARGE") ||
                    FuzzyRule.CheckConditions(pairP.Key, "POSITIVELARGE", pairE.Key, "NEGATIVESMALL") ||
@@ -127,8 +126,7 @@ public class FuzzyScript : MonoBehaviour
 
         foreach (KeyValuePair<string, float> pair in values)
         {
-            outputVals.Add(outputFunc.GetValueFromName(pair.Key));//pair.Value);
-            Debug.Log("name = " + pair.Key + " value = " + pair.Value);
+            outputVals.Add(outputFunc.GetValueFromName(pair.Key));
         }
 
         if (outputVals.Count < 1) return 0.0f;

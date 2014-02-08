@@ -9,6 +9,7 @@ public class RuleBaseScript : MonoBehaviour
 {
 	public GUIScript gui;
     public FuzzyScript fuzzy;
+    public AdaptiveCalculator calc;
 
 	void Start () 
 	{
@@ -43,7 +44,7 @@ public class RuleBaseScript : MonoBehaviour
             fuzzyValue = fuzzy.CalculateOutput(gui.playerHealth, 0.0f);
         }
         else fuzzyValue = fuzzy.CalculateOutput(gui.playerHealth, gui.enemyHealth.Average() * (100.0f/GUIScript.MAX_ENEMY_HEALTH));
-        Debug.Log(fuzzyValue);
+        Debug.Log("Fuzzy output = " + fuzzyValue);
 
         if (gui.enemyHealth.Count > 0)
         {
@@ -110,4 +111,26 @@ public class RuleBaseScript : MonoBehaviour
         }*/
 		return keywords;
 	}
+
+    public void PlaySting(string key)
+    {
+        float fuzzyValue;
+
+        if (gui.enemyHealth.Count < 1)
+        {
+            fuzzyValue = fuzzy.CalculateOutput(gui.playerHealth, 0.0f);
+        }
+        else fuzzyValue = fuzzy.CalculateOutput(gui.playerHealth, gui.enemyHealth.Average() * (100.0f / GUIScript.MAX_ENEMY_HEALTH));
+
+        if (fuzzyValue >= 50.0f)
+        {
+            key += "1_";
+        }
+        else
+        {
+            key += "2_";
+        }
+
+        calc.PlaySting(key);
+    }
 }
