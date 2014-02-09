@@ -18,6 +18,7 @@ public class AdaptiveCalculator : MonoBehaviour
 	private bool isDone = false;
 
 	private List<string> keywords = new List<string>();
+    private List<string> previousKeywords = new List<string>();
 
 	// Use this for initialization
 	void Start () 
@@ -47,16 +48,41 @@ public class AdaptiveCalculator : MonoBehaviour
 	{
 		finalData = new float[clipHolder.sampleLength];
 
+        List<string> prev = new List<string>();
+
 		for(int i = 0; i < keywords.Count; i++)
 		{
             string clipName = keywords[i] + segment;
 			float[] clipData = clipHolder.GetClipDataFromString(clipName);
 
-			for(int j = 0; j < finalData.Length; j++)
-			{
-				finalData[j] += clipData[j];
-			}
+            string shortString = keywords[i].Substring(0, 4);
+
+            if (previousKeywords.Contains(shortString))
+            {
+                for (int j = 0; j < finalData.Length; j++)
+                {
+                    finalData[j] += clipData[j];
+                }
+            }
+            else
+            {
+                //if the instrument wasn't played last time, fade it in
+                float factor = 1.0f/(finalData.Length/4.0f);
+                for (int j = 0; j < (finalData.Length); j++)
+                {
+                    finalData[j] += clipData[j];
+
+                    if (j < finalData.Length / 4.0f)
+                    {
+                        finalData[j] *= (factor * j);
+                    }
+                }
+            }
+
+            prev.Add(shortString);
 		}
+
+        previousKeywords = prev;
 
         isDone = true;
 	}
