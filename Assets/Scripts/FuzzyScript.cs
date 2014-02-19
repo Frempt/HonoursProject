@@ -12,8 +12,8 @@ public class FuzzyScript : MonoBehaviour
 
     public float CalculateOutput(float input1, float input2)
     {
-        playerHealth = new MembershipFunction(6, 0.0f, 100.0f);
-        enemiesHealth = new MembershipFunction(6, 0.0f, 100.0f);
+        playerHealth = new MembershipFunction(6, -0.1f, 100.0f);
+        enemiesHealth = new MembershipFunction(6, -0.1f, 100.0f);
         outputFunc = new MembershipFunction(6, 0.0f, 100.0f);
 
         List<KeyValuePair<string, float>> player = playerHealth.GetMembers(input1);
@@ -31,7 +31,7 @@ public class FuzzyScript : MonoBehaviour
                    FuzzyRule.CheckConditions(pairP.Key, "POSITIVESMALL", pairE.Key, "NEGATIVELARGE"))
                 {
                     float outputVal;
-                    if (pairP.Value > pairE.Value) outputVal = pairP.Value;
+                    if (pairP.Value < pairE.Value) outputVal = pairP.Value;
                     else outputVal = pairE.Value;
 
                     output.Add(new KeyValuePair<string, float>("POSITIVELARGE", outputVal));
@@ -47,7 +47,7 @@ public class FuzzyScript : MonoBehaviour
                     FuzzyRule.CheckConditions(pairP.Key, "POSITIVELARGE", pairE.Key, "POSITIVETINY"))
                 {
                     float outputVal;
-                    if (pairP.Value > pairE.Value) outputVal = pairP.Value;
+                    if (pairP.Value < pairE.Value) outputVal = pairP.Value;
                     else outputVal = pairE.Value;
 
                     output.Add(new KeyValuePair<string, float>("POSITIVESMALL", outputVal));
@@ -64,7 +64,7 @@ public class FuzzyScript : MonoBehaviour
                     FuzzyRule.CheckConditions(pairP.Key, "POSITIVELARGE", pairE.Key, "POSITIVESMALL"))
                 {
                     float outputVal;
-                    if (pairP.Value > pairE.Value) outputVal = pairP.Value;
+                    if (pairP.Value < pairE.Value) outputVal = pairP.Value;
                     else outputVal = pairE.Value;
 
                     output.Add(new KeyValuePair<string, float>("POSITIVETINY", outputVal));
@@ -81,7 +81,7 @@ public class FuzzyScript : MonoBehaviour
                     FuzzyRule.CheckConditions(pairP.Key, "POSITIVESMALL", pairE.Key, "POSITIVELARGE"))
                 {
                     float outputVal;
-                    if (pairP.Value > pairE.Value) outputVal = pairP.Value;
+                    if (pairP.Value < pairE.Value) outputVal = pairP.Value;
                     else outputVal = pairE.Value;
 
                     output.Add(new KeyValuePair<string, float>("NEGATIVETINY", outputVal));
@@ -97,7 +97,7 @@ public class FuzzyScript : MonoBehaviour
                     FuzzyRule.CheckConditions(pairP.Key, "POSITIVETINY", pairE.Key, "POSITIVELARGE"))
                 {
                     float outputVal;
-                    if (pairP.Value > pairE.Value) outputVal = pairP.Value;
+                    if (pairP.Value < pairE.Value) outputVal = pairP.Value;
                     else outputVal = pairE.Value;
 
                     output.Add(new KeyValuePair<string, float>("NEGATIVESMALL", outputVal));
@@ -109,7 +109,7 @@ public class FuzzyScript : MonoBehaviour
                    FuzzyRule.CheckConditions(pairP.Key, "NEGATIVESMALL", pairE.Key, "POSITIVELARGE"))
                 {
                     float outputVal;
-                    if (pairP.Value > pairE.Value) outputVal = pairP.Value;
+                    if (pairP.Value < pairE.Value) outputVal = pairP.Value;
                     else outputVal = pairE.Value;
 
                     output.Add(new KeyValuePair<string, float>("NEGATIVELARGE", outputVal));
@@ -126,7 +126,9 @@ public class FuzzyScript : MonoBehaviour
 
         foreach (KeyValuePair<string, float> pair in values)
         {
-            outputVals.Add(outputFunc.GetValueFromName(pair.Key));
+            MembershipValue val = outputFunc.GetValueFromName(pair.Key);
+            float up = val.GetCenterPoint();
+            outputVals.Add(up);
         }
 
         if (outputVals.Count < 1) return 0.0f;

@@ -21,7 +21,7 @@ class MembershipFunction
         names[4] = "POSITIVESMALL";
         names[5] = "POSITIVELARGE";
 
-        float spacing = (maxVal / numOfValues) * 1.2f;
+        float spacing = (maxVal / (numOfValues-1));
 
         for (int i = 0; i < values.Length; i++)
         {
@@ -29,7 +29,6 @@ class MembershipFunction
             float a = b - (spacing/2);
             float c = b + (spacing/2);
             values[i] = new MembershipValue(a, b, c);
-            //Debug.Log(a + " " + b + " " + c);
         }
     }
 
@@ -50,17 +49,17 @@ class MembershipFunction
         return returnList;
     }
 
-    public float GetValueFromName(string name)
+    public MembershipValue GetValueFromName(string name)
     {
         for (int i = 0; i < values.Length; i++)
         {
             if (names[i] == name)
             {
-                return values[i].GetCenterPoint();
+                return values[i];
             }
         }
-        //returns 0 if the name is not found
-        return 0.0f;
+        //returns null if the name is not found
+        return null;
     }
 
     public float GetValueFromName(string name, float membership)

@@ -14,9 +14,19 @@ class MembershipValue
         c = cNew;
     }
 
+    public float GetLeftPoint()
+    {
+        return a;
+    }
+
     public float GetCenterPoint()
     {
         return b;
+    }
+
+    public float GetRightPoint()
+    {
+        return c;
     }
 
     public float GetDegreeOfMembership(float input)

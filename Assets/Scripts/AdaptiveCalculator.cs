@@ -67,14 +67,14 @@ public class AdaptiveCalculator : MonoBehaviour
             else
             {
                 //if the instrument wasn't played last time, fade it in
-                float factor = 1.0f/(finalData.Length/4.0f);
+                float factor = 1.0f/(finalData.Length/2.0f);
                 for (int j = 0; j < (finalData.Length); j++)
                 {
                     finalData[j] += clipData[j];
 
-                    if (j < finalData.Length / 4.0f)
+                    if (j < finalData.Length / 2.0f)
                     {
-                        finalData[j] *= (factor * j);
+                        finalData[j] += (factor * j);
                     }
                 }
             }
