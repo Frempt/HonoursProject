@@ -23,6 +23,15 @@ public class RuleBaseScript : MonoBehaviour
 	{
 		List<string> keywords = new List<string>();
 
+        float fuzzyValue;
+
+        if (gui.enemyHealth.Count < 1)
+        {
+            fuzzyValue = fuzzy.CalculateOutput(gui.playerHealth, 0.0f);
+        }
+        else fuzzyValue = fuzzy.CalculateOutput(gui.playerHealth, gui.enemyHealth.Average() * (100.0f / GUIScript.MAX_ENEMY_HEALTH));
+        Debug.Log("Fuzzy output = " + fuzzyValue);
+
 		//lead component
 		string leadString = "lead_";
 
@@ -37,46 +46,37 @@ public class RuleBaseScript : MonoBehaviour
 			break;
 		}
 
-        float fuzzyValue;
-
-        if (gui.enemyHealth.Count < 1)
-        {
-            fuzzyValue = fuzzy.CalculateOutput(gui.playerHealth, 0.0f);
-        }
-        else fuzzyValue = fuzzy.CalculateOutput(gui.playerHealth, gui.enemyHealth.Average() * (100.0f/GUIScript.MAX_ENEMY_HEALTH));
-        Debug.Log("Fuzzy output = " + fuzzyValue);
-
         if (gui.enemyHealth.Count > 0)
         {
-            if (fuzzyValue == 100.0f)
+            if (fuzzyValue >= 88.0f)
             {
                 leadString = leadString + "1_";
             }
-            else if (fuzzyValue < 100.0f && fuzzyValue >= 90.0f)
+            else if (fuzzyValue >= 76.0f)
             {
                 leadString = leadString + "2_";
             }
-            else if (fuzzyValue < 90.0f && fuzzyValue >= 80.0f)
+            else if (fuzzyValue >= 64.0f)
             {
                 leadString = leadString + "3_";
             }
-            else if (fuzzyValue < 80.0f && fuzzyValue >= 70.0f)
+            else if (fuzzyValue >= 52.0f)
             {
                 leadString = leadString + "4_";
             }
-            else if (fuzzyValue < 70.0f && fuzzyValue >= 60.0f)
+            else if (fuzzyValue >= 40.0f)
             {
                 leadString = leadString + "5_";
             }
-            else if (fuzzyValue < 60.0f && fuzzyValue >= 50.0f)
+            else if (fuzzyValue >= 28.0f)
             {
                 leadString = leadString + "6_";
             }
-            else if (fuzzyValue < 50.0f && fuzzyValue >= 40.0f)
+            else if (fuzzyValue >= 16.0f)
             {
                 leadString = leadString + "7_";
             }
-            else if (fuzzyValue < 40.0f)
+            else
             {
                 leadString = leadString + "8_";
             }
@@ -87,28 +87,41 @@ public class RuleBaseScript : MonoBehaviour
 		//accomp #1 component
 		string accompString1 = "accomp_synth_";
 
-		if(fuzzyValue >= 50.0f)
+		if(fuzzyValue >= 75.0f)
 		{
 			accompString1 = accompString1 + "1_";
         }
-        else
+        else if(fuzzyValue >= 50.0f)
 		{
 			accompString1 = accompString1 + "2_";
 		}
+        else if (fuzzyValue >= 25.0f)
+        {
+            accompString1 = accompString1 + "3_";
+        }
+        else
+        {
+            accompString1 = accompString1 + "4_";
+        }
 
 		keywords.Add(accompString1);
 
 		//rhythm component
 		if(gui.playerState == GUIScript.PlayerState.MOVING)
 		{
-			string rhythmString = "rhythm_groove_1_";
+			string rhythmString = "rhythm_groove_";
+
+            if (fuzzyValue >= 50.0f)
+            {
+                rhythmString = rhythmString + "1_";
+            }
+            else
+            {
+                rhythmString = rhythmString + "2_";
+            }
+
 			keywords.Add(rhythmString);
 		}
-
-        /*foreach (string s in keywords)
-        {
-            Debug.Log(s);
-        }*/
 		return keywords;
 	}
 

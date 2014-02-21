@@ -80,7 +80,7 @@ public class GUIScript : MonoBehaviour
             enemyHealth.Add(newHealth);
         }
 
-        if(GUI.Button(new Rect(350, 0, 100, 50), "Throw Grenade"))
+        if(GUI.Button(new Rect(450, 0, 100, 50), "Throw Grenade"))
         {
             rbs.PlaySting("sting_guitar_");
         }

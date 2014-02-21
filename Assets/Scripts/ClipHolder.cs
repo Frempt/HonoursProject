@@ -51,7 +51,15 @@ public class ClipHolder : MonoBehaviour
 	public AudioClip accomp_synth_2_1;
 	public AudioClip accomp_synth_2_2;
 
+    public AudioClip accomp_synth_3_1;
+    public AudioClip accomp_synth_3_2;
+
+    public AudioClip accomp_synth_4_1;
+    public AudioClip accomp_synth_4_2;
+
 	public AudioClip rhythm_drum_1_1;
+
+    public AudioClip rhythm_drum_2_1;
 
     public AudioClip sting_guitar_1_1;
 
@@ -116,10 +124,25 @@ public class ClipHolder : MonoBehaviour
 		datas.Add("accomp_synth_2_3", GetDataFromClip(accomp_synth_2_1));
 		datas.Add("accomp_synth_2_4", GetDataFromClip(accomp_synth_2_2));
 
+        datas.Add("accomp_synth_3_1", GetDataFromClip(accomp_synth_4_1));
+        datas.Add("accomp_synth_3_2", GetDataFromClip(accomp_synth_4_2));
+        datas.Add("accomp_synth_3_3", GetDataFromClip(accomp_synth_4_1));
+        datas.Add("accomp_synth_3_4", GetDataFromClip(accomp_synth_4_2));
+
+        datas.Add("accomp_synth_4_1", GetDataFromClip(accomp_synth_4_1));
+        datas.Add("accomp_synth_4_2", GetDataFromClip(accomp_synth_4_2));
+        datas.Add("accomp_synth_4_3", GetDataFromClip(accomp_synth_4_1));
+        datas.Add("accomp_synth_4_4", GetDataFromClip(accomp_synth_4_2));
+
         datas.Add("rhythm_groove_1_1", GetDataFromClip(rhythm_drum_1_1));
         datas.Add("rhythm_groove_1_2", GetDataFromClip(rhythm_drum_1_1));
         datas.Add("rhythm_groove_1_3", GetDataFromClip(rhythm_drum_1_1));
         datas.Add("rhythm_groove_1_4", GetDataFromClip(rhythm_drum_1_1));
+
+        datas.Add("rhythm_groove_2_1", GetDataFromClip(rhythm_drum_2_1));
+        datas.Add("rhythm_groove_2_2", GetDataFromClip(rhythm_drum_2_1));
+        datas.Add("rhythm_groove_2_3", GetDataFromClip(rhythm_drum_2_1));
+        datas.Add("rhythm_groove_2_4", GetDataFromClip(rhythm_drum_2_1));
 
         datas.Add("sting_guitar_1_1", GetDataFromClip(sting_guitar_1_1));
 
