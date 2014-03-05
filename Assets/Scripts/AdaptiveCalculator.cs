@@ -46,7 +46,7 @@ public class AdaptiveCalculator : MonoBehaviour
 
 	public void Run()
 	{
-		finalData = new float[clipHolder.sampleLength];
+		finalData = new float[clipHolder.GetSampleLength(rules.gui.character)];
 
         List<string> prev = new List<string>();
 

@@ -39,10 +39,7 @@ public class Music : MonoBehaviour
 
         if (stingSource.clip != null)
         {
-            if (audio.time == 0.0f ||
-                audio.time == audio.clip.length / 4 ||
-                audio.time == audio.clip.length / 2 ||
-                audio.time == (audio.clip.length / 4 + audio.clip.length / 2))
+            if (IsOnBeat())
             {
                 if(!stingSource.isPlaying) stingSource.Play();
             }
@@ -53,4 +50,16 @@ public class Music : MonoBehaviour
             }
         }
 	}
+
+    public bool IsOnBeat()
+    {
+        if (audio.time == 0.0f ||
+               audio.time == audio.clip.length / 4 ||
+               audio.time == audio.clip.length / 2 ||
+               audio.time == (audio.clip.length / 4 + audio.clip.length / 2))
+        {
+            return true;
+        }
+        return false;
+    }
 }
