@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+using UnityEngine;
+
 class MembershipValue
 {
     private float a, b, c;
@@ -54,5 +56,21 @@ class MembershipValue
 
         //shouldn't happen
         return 0.0f;
+    }
+
+    public float GetValue(float membership)
+    {
+        if (membership == 1.0f)
+        {
+            return b;
+        }
+
+        float first = a + ((b - a)*membership);
+        float second = c - ((c - b) * membership);
+
+        float output = (first + second) / 2;
+        if (output > 100.0f) output = 100.0f;
+
+        return output;
     }
 }

@@ -127,8 +127,7 @@ public class FuzzyScript : MonoBehaviour
         foreach (KeyValuePair<string, float> pair in values)
         {
             MembershipValue val = outputFunc.GetValueFromName(pair.Key);
-            float up = UnityEngine.Random.Range(val.GetLeftPoint(), val.GetRightPoint());
-            outputVals.Add(up);
+            outputVals.Add(val.GetValue(pair.Value));
         }
 
         if (outputVals.Count < 1) return 0.0f;
