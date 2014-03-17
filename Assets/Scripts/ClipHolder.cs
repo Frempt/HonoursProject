@@ -45,6 +45,46 @@ public class ClipHolder : MonoBehaviour
     public AudioClip lead_synth_8_3;
     public AudioClip lead_synth_8_4;
 
+    public AudioClip lead_guitar_1_1;
+    public AudioClip lead_guitar_1_2;
+    public AudioClip lead_guitar_1_3;
+    public AudioClip lead_guitar_1_4;
+
+    public AudioClip lead_guitar_2_1;
+    public AudioClip lead_guitar_2_2;
+    public AudioClip lead_guitar_2_3;
+    public AudioClip lead_guitar_2_4;
+
+    public AudioClip lead_guitar_3_1;
+    public AudioClip lead_guitar_3_2;
+    public AudioClip lead_guitar_3_3;
+    public AudioClip lead_guitar_3_4;
+
+    public AudioClip lead_guitar_4_1;
+    public AudioClip lead_guitar_4_2;
+    public AudioClip lead_guitar_4_3;
+    public AudioClip lead_guitar_4_4;
+
+    public AudioClip lead_guitar_5_1;
+    public AudioClip lead_guitar_5_2;
+    public AudioClip lead_guitar_5_3;
+    public AudioClip lead_guitar_5_4;
+
+    public AudioClip lead_guitar_6_1;
+    public AudioClip lead_guitar_6_2;
+    public AudioClip lead_guitar_6_3;
+    public AudioClip lead_guitar_6_4;
+
+    public AudioClip lead_guitar_7_1;
+    public AudioClip lead_guitar_7_2;
+    public AudioClip lead_guitar_7_3;
+    public AudioClip lead_guitar_7_4;
+
+    public AudioClip lead_guitar_8_1;
+    public AudioClip lead_guitar_8_2;
+    public AudioClip lead_guitar_8_3;
+    public AudioClip lead_guitar_8_4;
+
 	public AudioClip accomp_synth_1_1;
 	public AudioClip accomp_synth_1_2;
 
@@ -104,6 +144,46 @@ public class ClipHolder : MonoBehaviour
     public AudioClip lead_trumpet_8_2;
     public AudioClip lead_trumpet_8_3;
     public AudioClip lead_trumpet_8_4;
+
+    public AudioClip lead_violin_1_1;
+    public AudioClip lead_violin_1_2;
+    public AudioClip lead_violin_1_3;
+    public AudioClip lead_violin_1_4;
+
+    public AudioClip lead_violin_2_1;
+    public AudioClip lead_violin_2_2;
+    public AudioClip lead_violin_2_3;
+    public AudioClip lead_violin_2_4;
+
+    public AudioClip lead_violin_3_1;
+    public AudioClip lead_violin_3_2;
+    public AudioClip lead_violin_3_3;
+    public AudioClip lead_violin_3_4;
+
+    public AudioClip lead_violin_4_1;
+    public AudioClip lead_violin_4_2;
+    public AudioClip lead_violin_4_3;
+    public AudioClip lead_violin_4_4;
+
+    public AudioClip lead_violin_5_1;
+    public AudioClip lead_violin_5_2;
+    public AudioClip lead_violin_5_3;
+    public AudioClip lead_violin_5_4;
+
+    public AudioClip lead_violin_6_1;
+    public AudioClip lead_violin_6_2;
+    public AudioClip lead_violin_6_3;
+    public AudioClip lead_violin_6_4;
+
+    public AudioClip lead_violin_7_1;
+    public AudioClip lead_violin_7_2;
+    public AudioClip lead_violin_7_3;
+    public AudioClip lead_violin_7_4;
+
+    public AudioClip lead_violin_8_1;
+    public AudioClip lead_violin_8_2;
+    public AudioClip lead_violin_8_3;
+    public AudioClip lead_violin_8_4;
 
     public AudioClip accomp_trombone_1_1;
     public AudioClip accomp_trombone_1_2;
@@ -186,6 +266,46 @@ public class ClipHolder : MonoBehaviour
         datas.Add("lead_synth_8_3", GetDataFromClip(lead_synth_8_3));
         datas.Add("lead_synth_8_4", GetDataFromClip(lead_synth_8_4));
 
+        datas.Add("lead_guitar_1_1", GetDataFromClip(lead_guitar_1_1));
+        datas.Add("lead_guitar_1_2", GetDataFromClip(lead_guitar_1_2));
+        datas.Add("lead_guitar_1_3", GetDataFromClip(lead_guitar_1_3));
+        datas.Add("lead_guitar_1_4", GetDataFromClip(lead_guitar_1_4));
+
+        datas.Add("lead_guitar_2_1", GetDataFromClip(lead_guitar_2_1));
+        datas.Add("lead_guitar_2_2", GetDataFromClip(lead_guitar_2_2));
+        datas.Add("lead_guitar_2_3", GetDataFromClip(lead_guitar_2_3));
+        datas.Add("lead_guitar_2_4", GetDataFromClip(lead_guitar_2_4));
+
+        datas.Add("lead_guitar_3_1", GetDataFromClip(lead_guitar_3_1));
+        datas.Add("lead_guitar_3_2", GetDataFromClip(lead_guitar_3_2));
+        datas.Add("lead_guitar_3_3", GetDataFromClip(lead_guitar_3_3));
+        datas.Add("lead_guitar_3_4", GetDataFromClip(lead_guitar_3_4));
+
+        datas.Add("lead_guitar_4_1", GetDataFromClip(lead_guitar_4_1));
+        datas.Add("lead_guitar_4_2", GetDataFromClip(lead_guitar_4_2));
+        datas.Add("lead_guitar_4_3", GetDataFromClip(lead_guitar_4_3));
+        datas.Add("lead_guitar_4_4", GetDataFromClip(lead_guitar_4_4));
+
+        datas.Add("lead_guitar_5_1", GetDataFromClip(lead_guitar_5_1));
+        datas.Add("lead_guitar_5_2", GetDataFromClip(lead_guitar_5_2));
+        datas.Add("lead_guitar_5_3", GetDataFromClip(lead_guitar_5_3));
+        datas.Add("lead_guitar_5_4", GetDataFromClip(lead_guitar_5_4));
+
+        datas.Add("lead_guitar_6_1", GetDataFromClip(lead_guitar_6_1));
+        datas.Add("lead_guitar_6_2", GetDataFromClip(lead_guitar_6_2));
+        datas.Add("lead_guitar_6_3", GetDataFromClip(lead_guitar_6_3));
+        datas.Add("lead_guitar_6_4", GetDataFromClip(lead_guitar_6_4));
+
+        datas.Add("lead_guitar_7_1", GetDataFromClip(lead_guitar_7_1));
+        datas.Add("lead_guitar_7_2", GetDataFromClip(lead_guitar_7_2));
+        datas.Add("lead_guitar_7_3", GetDataFromClip(lead_guitar_7_3));
+        datas.Add("lead_guitar_7_4", GetDataFromClip(lead_guitar_7_4));
+
+        datas.Add("lead_guitar_8_1", GetDataFromClip(lead_guitar_8_1));
+        datas.Add("lead_guitar_8_2", GetDataFromClip(lead_guitar_8_2));
+        datas.Add("lead_guitar_8_3", GetDataFromClip(lead_guitar_8_3));
+        datas.Add("lead_guitar_8_4", GetDataFromClip(lead_guitar_8_4));
+
 		datas.Add("accomp_synth_1_1", GetDataFromClip(accomp_synth_1_1));
 		datas.Add("accomp_synth_1_2", GetDataFromClip(accomp_synth_1_2));
 		datas.Add("accomp_synth_1_3", GetDataFromClip(accomp_synth_1_1));
@@ -262,6 +382,46 @@ public class ClipHolder : MonoBehaviour
         datas.Add("lead_trumpet_8_2", GetDataFromClip(lead_trumpet_8_2));
         datas.Add("lead_trumpet_8_3", GetDataFromClip(lead_trumpet_8_3));
         datas.Add("lead_trumpet_8_4", GetDataFromClip(lead_trumpet_8_4));
+
+        datas.Add("lead_violin_1_1", GetDataFromClip(lead_violin_1_1));
+        datas.Add("lead_violin_1_2", GetDataFromClip(lead_violin_1_2));
+        datas.Add("lead_violin_1_3", GetDataFromClip(lead_violin_1_3));
+        datas.Add("lead_violin_1_4", GetDataFromClip(lead_violin_1_4));
+
+        datas.Add("lead_violin_2_1", GetDataFromClip(lead_violin_2_1));
+        datas.Add("lead_violin_2_2", GetDataFromClip(lead_violin_2_2));
+        datas.Add("lead_violin_2_3", GetDataFromClip(lead_violin_2_3));
+        datas.Add("lead_violin_2_4", GetDataFromClip(lead_violin_2_4));
+
+        datas.Add("lead_violin_3_1", GetDataFromClip(lead_violin_3_1));
+        datas.Add("lead_violin_3_2", GetDataFromClip(lead_violin_3_2));
+        datas.Add("lead_violin_3_3", GetDataFromClip(lead_violin_3_3));
+        datas.Add("lead_violin_3_4", GetDataFromClip(lead_violin_3_4));
+
+        datas.Add("lead_violin_4_1", GetDataFromClip(lead_violin_4_1));
+        datas.Add("lead_violin_4_2", GetDataFromClip(lead_violin_4_2));
+        datas.Add("lead_violin_4_3", GetDataFromClip(lead_violin_4_3));
+        datas.Add("lead_violin_4_4", GetDataFromClip(lead_violin_4_4));
+
+        datas.Add("lead_violin_5_1", GetDataFromClip(lead_violin_5_1));
+        datas.Add("lead_violin_5_2", GetDataFromClip(lead_violin_5_2));
+        datas.Add("lead_violin_5_3", GetDataFromClip(lead_violin_5_3));
+        datas.Add("lead_violin_5_4", GetDataFromClip(lead_violin_5_4));
+
+        datas.Add("lead_violin_6_1", GetDataFromClip(lead_violin_6_1));
+        datas.Add("lead_violin_6_2", GetDataFromClip(lead_violin_6_2));
+        datas.Add("lead_violin_6_3", GetDataFromClip(lead_violin_6_3));
+        datas.Add("lead_violin_6_4", GetDataFromClip(lead_violin_6_4));
+
+        datas.Add("lead_violin_7_1", GetDataFromClip(lead_violin_7_1));
+        datas.Add("lead_violin_7_2", GetDataFromClip(lead_violin_7_2));
+        datas.Add("lead_violin_7_3", GetDataFromClip(lead_violin_7_3));
+        datas.Add("lead_violin_7_4", GetDataFromClip(lead_violin_7_4));
+
+        datas.Add("lead_violin_8_1", GetDataFromClip(lead_violin_8_1));
+        datas.Add("lead_violin_8_2", GetDataFromClip(lead_violin_8_2));
+        datas.Add("lead_violin_8_3", GetDataFromClip(lead_violin_8_3));
+        datas.Add("lead_violin_8_4", GetDataFromClip(lead_violin_8_4));
 
         datas.Add("accomp_trombone_1_1", GetDataFromClip(accomp_trombone_1_1));
         datas.Add("accomp_trombone_1_2", GetDataFromClip(accomp_trombone_1_2));

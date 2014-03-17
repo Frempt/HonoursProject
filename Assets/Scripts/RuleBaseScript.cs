@@ -23,13 +23,16 @@ public class RuleBaseScript : MonoBehaviour
     {
         List<string> keywords = new List<string>();
 
-        float fuzzyValue;
+        float enemyHealth;
 
         if (gui.enemyHealth.Count < 1)
         {
-            fuzzyValue = fuzzy.CalculateOutput(gui.playerHealth, 0.0f);
+            gui.enemyHealth.Add(0.0f);
         }
-        else fuzzyValue = fuzzy.CalculateOutput(gui.playerHealth, gui.enemyHealth.Average() * (100.0f / GUIScript.MAX_ENEMY_HEALTH));
+
+        enemyHealth = (gui.enemyHealth.Average() * GUIScript.MAX_ENEMIES) * (100.0f / (GUIScript.MAX_ENEMY_HEALTH * GUIScript.MAX_ENEMIES));
+
+        float fuzzyValue = fuzzy.CalculateOutput(gui.playerHealth, enemyHealth);
         Debug.Log("Fuzzy output = " + fuzzyValue);
 
         switch (gui.character)
@@ -49,43 +52,40 @@ public class RuleBaseScript : MonoBehaviour
                         break;
                 }
 
-                if (gui.enemyHealth.Count > 0)
+                if (fuzzyValue >= 88.0f)
                 {
-                    if (fuzzyValue >= 88.0f)
-                    {
-                        leadString = leadString + "1_";
-                    }
-                    else if (fuzzyValue >= 76.0f)
-                    {
-                        leadString = leadString + "2_";
-                    }
-                    else if (fuzzyValue >= 64.0f)
-                    {
-                        leadString = leadString + "3_";
-                    }
-                    else if (fuzzyValue >= 52.0f)
-                    {
-                        leadString = leadString + "4_";
-                    }
-                    else if (fuzzyValue >= 40.0f)
-                    {
-                        leadString = leadString + "5_";
-                    }
-                    else if (fuzzyValue >= 28.0f)
-                    {
-                        leadString = leadString + "6_";
-                    }
-                    else if (fuzzyValue >= 16.0f)
-                    {
-                        leadString = leadString + "7_";
-                    }
-                    else
-                    {
-                        leadString = leadString + "8_";
-                    }
-
-                    keywords.Add(leadString);
+                    leadString = leadString + "1_";
                 }
+                else if (fuzzyValue >= 76.0f)
+                {
+                    leadString = leadString + "2_";
+                }
+                else if (fuzzyValue >= 64.0f)
+                {
+                    leadString = leadString + "3_";
+                }
+                else if (fuzzyValue >= 52.0f)
+                {
+                    leadString = leadString + "4_";
+                }
+                else if (fuzzyValue >= 40.0f)
+                {
+                    leadString = leadString + "5_";
+                }
+                else if (fuzzyValue >= 28.0f)
+                {
+                    leadString = leadString + "6_";
+                }
+                else if (fuzzyValue >= 16.0f)
+                {
+                    leadString = leadString + "7_";
+                }
+                else
+                {
+                    leadString = leadString + "8_";
+                }
+
+                keywords.Add(leadString);
 
                 //accomp #1 component
                 string accompString1 = "accomp_synth_";
@@ -142,43 +142,40 @@ public class RuleBaseScript : MonoBehaviour
                         break;
                 }
 
-                if (gui.enemyHealth.Count > 0)
+                if (fuzzyValue >= 88.0f)
                 {
-                    if (fuzzyValue >= 88.0f)
-                    {
-                        leadKString = leadKString + "1_";
-                    }
-                    else if (fuzzyValue >= 76.0f)
-                    {
-                        leadKString = leadKString + "2_";
-                    }
-                    else if (fuzzyValue >= 64.0f)
-                    {
-                        leadKString = leadKString + "3_";
-                    }
-                    else if (fuzzyValue >= 52.0f)
-                    {
-                        leadKString = leadKString + "4_";
-                    }
-                    else if (fuzzyValue >= 40.0f)
-                    {
-                        leadKString = leadKString + "5_";
-                    }
-                    else if (fuzzyValue >= 28.0f)
-                    {
-                        leadKString = leadKString + "6_";
-                    }
-                    else if (fuzzyValue >= 16.0f)
-                    {
-                        leadKString = leadKString + "7_";
-                    }
-                    else
-                    {
-                        leadKString = leadKString + "8_";
-                    }
-
-                    keywords.Add(leadKString);
+                    leadKString = leadKString + "1_";
                 }
+                else if (fuzzyValue >= 76.0f)
+                {
+                    leadKString = leadKString + "2_";
+                }
+                else if (fuzzyValue >= 64.0f)
+                {
+                    leadKString = leadKString + "3_";
+                }
+                else if (fuzzyValue >= 52.0f)
+                {
+                    leadKString = leadKString + "4_";
+                }
+                else if (fuzzyValue >= 40.0f)
+                {
+                    leadKString = leadKString + "5_";
+                }
+                else if (fuzzyValue >= 28.0f)
+                {
+                    leadKString = leadKString + "6_";
+                }
+                else if (fuzzyValue >= 16.0f)
+                {
+                    leadKString = leadKString + "7_";
+                }
+                else
+                {
+                    leadKString = leadKString + "8_";
+                }
+
+                keywords.Add(leadKString);
 
                 //accomp #1 component
                 string accompKString1 = "accomp_trombone_";
