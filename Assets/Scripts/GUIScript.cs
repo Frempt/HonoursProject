@@ -5,6 +5,8 @@ using System.Linq;
 
 public class GUIScript : MonoBehaviour 
 {
+    public GUISkin skin;
+
     public enum PlayerCharacter
     {
         SPACENINJA = 0,
@@ -77,6 +79,8 @@ public class GUIScript : MonoBehaviour
 
 	public void OnGUI()
 	{
+        GUI.skin = skin;
+
         switch(character)
         {
             case PlayerCharacter.KNIGHT:
@@ -87,13 +91,14 @@ public class GUIScript : MonoBehaviour
             GUI.Label(new Rect(0, 0, Screen.width, Screen.height), spaceNinjaTex);
             break;
         }
+
         windowRect = GUI.Window(0, windowRect, DoWindow, GUIContent.none);
 	}
 
     public void DoWindow(int id)
     {
         //buttons
-        if (GUI.Button(new Rect(0, 0, 100, 50), "Switch Weapon"))
+        if (GUI.Button(new Rect(0, 0, Screen.width/10, Screen.height/10), "Switch Weapon"))
         {
             if (weapon == SelectedWeapon.SHOTGUN)
             {
@@ -105,7 +110,7 @@ public class GUIScript : MonoBehaviour
             }
         }
 
-        if (GUI.Button(new Rect(150, 0, 100, 50), "Start/Stop Moving"))
+        if (GUI.Button(new Rect(Screen.width/9, 0, Screen.width / 10, Screen.height / 10), "Start/Stop Moving"))
         {
             if (playerState == PlayerState.IDLE)
             {
@@ -117,37 +122,23 @@ public class GUIScript : MonoBehaviour
             }
         }
 
-        if (GUI.Button(new Rect(300, 0, 100, 50), "Spawn Enemy") && enemyHealth.Count < MAX_ENEMIES)
+        if (GUI.Button(new Rect(Screen.width/4, 0, Screen.width / 10, Screen.height / 10), "Spawn Enemy") && enemyHealth.Count < MAX_ENEMIES)
         {
             float newHealth = MAX_ENEMY_HEALTH;
             enemyHealth.Add(newHealth);
         }
 
-        if (GUI.Button(new Rect(Screen.width - Screen.width / 4, 0, Screen.width / 4, Screen.height), "Switch Character"))
-        {
-            switch (character)
-            {
-                case PlayerCharacter.SPACENINJA:
-                    character = PlayerCharacter.KNIGHT;
-                    break;
-
-                case PlayerCharacter.KNIGHT:
-                    character = PlayerCharacter.SPACENINJA;
-                    break;
-            }
-        }
-
         switch(character)
         {
             case PlayerCharacter.SPACENINJA:
-            if(GUI.Button(new Rect(450, 0, 100, 50), "Throw Grenade"))
+                if (GUI.Button(new Rect(Screen.width/2, 0, Screen.width / 10, Screen.height / 10), "Throw Grenade"))
             {
                 rbs.PlaySting("sting_guitar_");
             }
             break;
 
             case PlayerCharacter.KNIGHT:
-            if (GUI.Button(new Rect(450, 0, 100, 50), "Rally Troops"))
+            if (GUI.Button(new Rect(Screen.width / 2, 0, Screen.width / 10, Screen.height / 10), "Rally Troops"))
             {
                 rbs.PlaySting("sting_horn_");
             }
@@ -155,13 +146,13 @@ public class GUIScript : MonoBehaviour
         }
 
         //sliders
-        GUI.Label(new Rect(20, 100, 150, 100), "Player Health : " + playerHealth);
-        playerHealth = GUI.HorizontalSlider(new Rect(150, 100, 100, 10), playerHealth, 0.0f, MAX_PLAYER_HEALTH);
+        GUI.Label(new Rect(Screen.width/100, Screen.height/10, 150, 100), "Player Health : " + playerHealth);
+        playerHealth = GUI.HorizontalSlider(new Rect(Screen.width/10, 100, 100, 10), playerHealth, 0.0f, MAX_PLAYER_HEALTH);
 
         for (int i = 0; i < enemyHealth.Count; i++)
         {
-            GUI.Label(new Rect(20, 200 + (100 * i), 150, 100), "Enemy " + i + " Health : " + enemyHealth[i]);
-            enemyHealth[i] = GUI.HorizontalSlider(new Rect(150, 200 + (100 * i), 100, 10), enemyHealth[i], 0.0f, MAX_ENEMY_HEALTH);
+            GUI.Label(new Rect(Screen.width / 100, 200 + (100 * i), 150, 100), "Enemy " + i + " Health : " + enemyHealth[i]);
+            enemyHealth[i] = GUI.HorizontalSlider(new Rect(Screen.width / 10, 200 + (100 * i), 100, 10), enemyHealth[i], 0.0f, MAX_ENEMY_HEALTH);
 
             if (enemyHealth[i] <= 0.0f)
             {
@@ -169,7 +160,7 @@ public class GUIScript : MonoBehaviour
             }
         }
 
-        GUI.Label(new Rect(Screen.width / 10, Screen.height - Screen.height / 10, 1000, 100), "Avg. Frame Time = " + frametimes.Average());
-        GUI.Label(new Rect(Screen.width / 10, Screen.height - Screen.height / 40, 1000, 100), "Memory Used = " + memoryUsage + " MB");
+        GUI.Label(new Rect(Screen.width / 100, Screen.height - Screen.height / 15, 1000, 100), "Avg. Frame Time = " + frametimes.Average());
+        GUI.Label(new Rect(Screen.width / 100, Screen.height - Screen.height / 20, 1000, 100), "Memory Used = " + memoryUsage + " MB");
     }
 }

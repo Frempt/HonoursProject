@@ -1,9 +1,8 @@
 -debug
 -target:library
 -nowarn:0169
--out:Temp/Assembly-CSharp.dll
+-out:Temp/Assembly-CSharp-firstpass.dll
 -r:"C:/Program Files (x86)/Unity/Editor/Data/PlaybackEngines/AndroidPlayer/Managed/UnityEngine.dll"
--r:Library/ScriptAssemblies/Assembly-CSharp-firstpass.dll
 -define:UNITY_ANDROID
 -define:ENABLE_MICROPHONE
 -define:ENABLE_TEXTUREID_MAP
@@ -31,14 +30,14 @@
 -define:ENABLE_SINGLE_INSTANCE_BUILD_SETTING
 -define:UNITY_4_3_3
 -define:UNITY_4_3
-Assets/Scripts/AdaptiveCalculator.cs
-Assets/Scripts/ClipHolder.cs
-"Assets/Scripts/Fuzzy Scripts/FuzzyRule.cs"
-"Assets/Scripts/Fuzzy Scripts/MembershipFunction.cs"
-"Assets/Scripts/Fuzzy Scripts/MembershipValue.cs"
-Assets/Scripts/FuzzyScript.cs
-Assets/Scripts/GUIScript.cs
-Assets/Scripts/Music.cs
-Assets/Scripts/RuleBaseScript.cs
+-define:Menu
+Assets/Plugins/FMOD/Editor/FMODEditorExtension.cs
+Assets/Plugins/FMOD/FMODAsset.cs
+Assets/Plugins/FMOD/FMOD_Listener.cs
+Assets/Plugins/FMOD/FMOD_StudioEventEmitter.cs
+Assets/Plugins/FMOD/FMOD_StudioSystem.cs
+Assets/Plugins/FMOD/Wrapper/fmod.cs
+Assets/Plugins/FMOD/Wrapper/fmod_errors.cs
+Assets/Plugins/FMOD/Wrapper/fmod_studio.cs
 -r:"C:/Program Files (x86)/Unity/Editor/Data/Mono\lib/mono/unity\System.Runtime.Serialization.dll"
 -r:"C:/Program Files (x86)/Unity/Editor/Data/Mono\lib/mono/unity\System.Xml.Linq.dll"

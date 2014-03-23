@@ -34,6 +34,7 @@ public class RuleBaseScript : MonoBehaviour
 
         float fuzzyValue = fuzzy.CalculateOutput(gui.playerHealth, enemyHealth);
         Debug.Log("Fuzzy output = " + fuzzyValue);
+        fuzzyValue += UnityEngine.Random.Range(-3, 3);
 
         switch (gui.character)
         {
