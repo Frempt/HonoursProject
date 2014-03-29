@@ -48,7 +48,7 @@ public class GUIScript : MonoBehaviour
 
     //system info
     private List<float> frametimes;
-    private int maxFrameTimes = 50;
+    private int maxFrameTimes = 1000;
 
     private int memoryUsage;
 
@@ -110,7 +110,18 @@ public class GUIScript : MonoBehaviour
             }
         }
 
-        if (GUI.Button(new Rect(Screen.width/9, 0, Screen.width / 10, Screen.height / 10), "Start/Stop Moving"))
+        string moveState = "Start/Stop Moving";
+
+        if (playerState == PlayerState.IDLE)
+        {
+            moveState = "Start Moving";
+        }
+        else
+        {
+            moveState = "Stop Moving";
+        }
+
+        if (GUI.Button(new Rect(Screen.width/9, 0, Screen.width / 10, Screen.height / 10), moveState))
         {
             if (playerState == PlayerState.IDLE)
             {
@@ -131,18 +142,23 @@ public class GUIScript : MonoBehaviour
         switch(character)
         {
             case PlayerCharacter.SPACENINJA:
-                if (GUI.Button(new Rect(Screen.width/2, 0, Screen.width / 10, Screen.height / 10), "Throw Grenade"))
+            if (GUI.Button(new Rect(Screen.width/2, 0, Screen.width / 10, Screen.height / 10), "Throw Grenade"))
             {
-                rbs.PlaySting("sting_guitar_");
+                if(rbs != null) rbs.PlaySting("sting_guitar_");
             }
             break;
 
             case PlayerCharacter.KNIGHT:
             if (GUI.Button(new Rect(Screen.width / 2, 0, Screen.width / 10, Screen.height / 10), "Rally Troops"))
             {
-                rbs.PlaySting("sting_horn_");
+                if (rbs != null)  rbs.PlaySting("sting_horn_");
             }
             break;
+        }
+
+        if (GUI.Button(new Rect(Screen.width - Screen.width / 10, 0, Screen.width / 10, Screen.height / 10), "Back to Menu"))
+        {
+            Application.LoadLevel("MenuScene");
         }
 
         //sliders
@@ -154,7 +170,7 @@ public class GUIScript : MonoBehaviour
             GUI.Label(new Rect(Screen.width / 100, 200 + (100 * i), 150, 100), "Enemy " + i + " Health : " + enemyHealth[i]);
             enemyHealth[i] = GUI.HorizontalSlider(new Rect(Screen.width / 10, 200 + (100 * i), 100, 10), enemyHealth[i], 0.0f, MAX_ENEMY_HEALTH);
 
-            if (enemyHealth[i] <= 0.0f)
+            if (!Input.GetMouseButton(0) && enemyHealth[i] <= 0.0f)
             {
                 enemyHealth.Remove(enemyHealth[i]);
             }
