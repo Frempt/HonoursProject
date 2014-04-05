@@ -16,10 +16,7 @@ public class Music : MonoBehaviour
 		isReadyForClip = false;
         calc.GetNewClip();
 
-		if(audio.clip != null)
-		{
-			audio.Play();
-		}
+		audio.Play();
 	}
 	
 	void Update () 

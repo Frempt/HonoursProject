@@ -61,7 +61,7 @@ public class GUIScript : MonoBehaviour
 
 	void Update () 
 	{
-        frametimes.Add(Time.deltaTime);
+        /*frametimes.Add(Time.deltaTime);
         if (frametimes.Count > maxFrameTimes) frametimes.RemoveAt(0);
 
         memoryUsage = 0;
@@ -74,14 +74,14 @@ public class GUIScript : MonoBehaviour
         }
 
         memoryUsage /= 1024;
-        memoryUsage /= 1024;
+        memoryUsage /= 1024;*/
 	}
 
 	public void OnGUI()
 	{
         GUI.skin = skin;
 
-        switch(character)
+        /*switch(character)
         {
             case PlayerCharacter.KNIGHT:
             GUI.Label(new Rect(0, 0, Screen.width, Screen.height), knightTex);
@@ -90,7 +90,7 @@ public class GUIScript : MonoBehaviour
             case PlayerCharacter.SPACENINJA:
             GUI.Label(new Rect(0, 0, Screen.width, Screen.height), spaceNinjaTex);
             break;
-        }
+        }*/
 
         windowRect = GUI.Window(0, windowRect, DoWindow, GUIContent.none);
 	}
@@ -176,7 +176,7 @@ public class GUIScript : MonoBehaviour
             }
         }
 
-        GUI.Label(new Rect(Screen.width / 100, Screen.height - Screen.height / 15, 1000, 100), "Avg. Frame Time = " + frametimes.Average());
-        GUI.Label(new Rect(Screen.width / 100, Screen.height - Screen.height / 20, 1000, 100), "Memory Used = " + memoryUsage + " MB");
+        //GUI.Label(new Rect(Screen.width / 100, Screen.height - Screen.height / 15, 1000, 100), "Avg. Frame Time = " + frametimes.Average());
+        //GUI.Label(new Rect(Screen.width / 100, Screen.height - Screen.height / 20, 1000, 100), "Memory Used = " + memoryUsage + " MB");
     }
 }

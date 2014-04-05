@@ -5,6 +5,7 @@ public class MenuScript : MonoBehaviour
 {
     public Texture2D knightTex;
     public Texture2D spaceNinjaTex;
+    public GUISkin skin;
 
 	// Use this for initialization
 	void Start () 
@@ -20,28 +21,26 @@ public class MenuScript : MonoBehaviour
 
     void OnGUI()
     {
-        if (GUI.Button(new Rect(0, 0, Screen.width / 2, Screen.height), spaceNinjaTex, "label"))
+        GUI.skin = skin;
+
+        if (GUI.Button(new Rect(0, 0, Screen.width / 2, Screen.height / 2), "1A"))
         {
-            if (Input.mousePosition.y <= Screen.height / 2)
-            {
-                Application.LoadLevel("SpaceNinjaScene");
-            }
-            else
-            {
-                Application.LoadLevel("SpaceNinjaStaticScene");
-            }
+            Application.LoadLevel("SpaceNinjaStaticScene");
         }
 
-        if (GUI.Button(new Rect(Screen.width / 2, 0, Screen.width / 2, Screen.height), knightTex, "label"))
+        if (GUI.Button(new Rect(0, Screen.height / 2, Screen.width / 2, Screen.height / 2), "1B"))
         {
-            if (Input.mousePosition.y <= Screen.height / 2)
-            {
-                Application.LoadLevel("KnightScene");
-            }
-            else
-            {
-                Application.LoadLevel("KnightStaticScene");
-            }
+            Application.LoadLevel("SpaceNinjaScene");
+        }
+
+        if (GUI.Button(new Rect(Screen.width / 2, 0, Screen.width / 2, Screen.height / 2), "2A"))
+        {
+            Application.LoadLevel("KnightStaticScene");
+        }
+
+        if (GUI.Button(new Rect(Screen.width / 2, Screen.height / 2, Screen.width / 2, Screen.height / 2), "2B"))
+        {
+            Application.LoadLevel("KnightScene");
         }
     }
 }
