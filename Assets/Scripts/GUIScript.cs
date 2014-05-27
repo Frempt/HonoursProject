@@ -46,53 +46,36 @@ public class GUIScript : MonoBehaviour
     public Texture2D knightTex;
     public Texture2D spaceNinjaTex;
 
-    //system info
-    private List<float> frametimes;
-    private int maxFrameTimes = 1000;
-
-    private int memoryUsage;
+    public bool drawGUI;
 
 	void Start () 
 	{
 		playerHealth = MAX_PLAYER_HEALTH;
-
-        frametimes = new List<float>();
 	}
 
 	void Update () 
 	{
-        /*frametimes.Add(Time.deltaTime);
-        if (frametimes.Count > maxFrameTimes) frametimes.RemoveAt(0);
-
-        memoryUsage = 0;
-
-        Object[] objs = Resources.FindObjectsOfTypeAll<AudioClip>();
-
-        foreach (Object o in objs)
-        {
-            memoryUsage += Profiler.GetRuntimeMemorySize(o);
-        }
-
-        memoryUsage /= 1024;
-        memoryUsage /= 1024;*/
 	}
 
 	public void OnGUI()
 	{
         GUI.skin = skin;
 
-        /*switch(character)
+        if (drawGUI)
         {
-            case PlayerCharacter.KNIGHT:
-            GUI.Label(new Rect(0, 0, Screen.width, Screen.height), knightTex);
-            break;
+            switch (character)
+            {
+                case PlayerCharacter.KNIGHT:
+                    GUI.Label(new Rect(0, 0, Screen.width, Screen.height), knightTex);
+                    break;
 
-            case PlayerCharacter.SPACENINJA:
-            GUI.Label(new Rect(0, 0, Screen.width, Screen.height), spaceNinjaTex);
-            break;
-        }*/
+                case PlayerCharacter.SPACENINJA:
+                    GUI.Label(new Rect(0, 0, Screen.width, Screen.height), spaceNinjaTex);
+                    break;
+            }
 
-        windowRect = GUI.Window(0, windowRect, DoWindow, GUIContent.none);
+            windowRect = GUI.Window(0, windowRect, DoWindow, GUIContent.none);
+        }
 	}
 
     public void DoWindow(int id)
@@ -175,8 +158,5 @@ public class GUIScript : MonoBehaviour
                 enemyHealth.Remove(enemyHealth[i]);
             }
         }
-
-        //GUI.Label(new Rect(Screen.width / 100, Screen.height - Screen.height / 15, 1000, 100), "Avg. Frame Time = " + frametimes.Average());
-        //GUI.Label(new Rect(Screen.width / 100, Screen.height - Screen.height / 20, 1000, 100), "Memory Used = " + memoryUsage + " MB");
     }
 }

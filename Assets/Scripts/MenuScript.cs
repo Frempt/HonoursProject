@@ -23,22 +23,12 @@ public class MenuScript : MonoBehaviour
     {
         GUI.skin = skin;
 
-        if (GUI.Button(new Rect(0, 0, Screen.width / 2, Screen.height / 2), "1A"))
-        {
-            Application.LoadLevel("SpaceNinjaStaticScene");
-        }
-
-        if (GUI.Button(new Rect(0, Screen.height / 2, Screen.width / 2, Screen.height / 2), "1B"))
+        if (GUI.Button(new Rect(0, 0, Screen.width / 2, Screen.height), "Cyber Ninja"))
         {
             Application.LoadLevel("SpaceNinjaScene");
         }
 
-        if (GUI.Button(new Rect(Screen.width / 2, 0, Screen.width / 2, Screen.height / 2), "2A"))
-        {
-            Application.LoadLevel("KnightStaticScene");
-        }
-
-        if (GUI.Button(new Rect(Screen.width / 2, Screen.height / 2, Screen.width / 2, Screen.height / 2), "2B"))
+        if (GUI.Button(new Rect(Screen.width / 2, 0, Screen.width / 2, Screen.height), "Knight"))
         {
             Application.LoadLevel("KnightScene");
         }
